@@ -28,20 +28,15 @@ Cypress.Commands.add('loginToTrello', () => {
    // eng.razanbalatiah96@gmail.com
    // qa!@#$%^&*
 
-      cy.visit("https://id.atlassian.com/login")
+      cy.visit("/login")
+      cy.wait(3000)
       cy.get('[name=username]').type("eng.razanbalatiah96@gmail.com");
       cy.get('#login-submit').click();
       cy.get('#password').type("qa!@#$%^&*"+"{enter}");  
       cy.get('#login-submit').click();
-      cy.wait(20000)
-      cy.origin('https://home.atlassian.com', () => {
-        cy.get(".css-sefnzj").eq(1).click();
-      })
-      cy.wait(5000)
+      cy.wait(6000)
 })
 
-Cypress.Commands.add("findByTestId",()=>{
-  cy.origin('https://trello.com', (testid) => {
+Cypress.Commands.add("findByTestId",(testid)=>{
   cy.get(`[data-testid=${testid}]`)
-  })
 })
